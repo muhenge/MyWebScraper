@@ -16,9 +16,9 @@ class Distros
     url = "https://distrowatch.com/index.php?dataspan=#{@input}"
     document = open(url)
     content = document.read
-    #unparsed = HTTParty.get(content )
     parsed = Nokogiri::HTML(content)
-    puts parsed.css('table.Logo')
+    list = parsed.css('table.Logo table.News td.phr2 a')
+    puts list
   end
 end
 
