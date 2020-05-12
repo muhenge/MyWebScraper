@@ -1,1 +1,0 @@
-require "distro_info.rb"
