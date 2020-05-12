@@ -1,7 +1,7 @@
-require "nokogiri"
-require "httparty"
-require "httpclient"
-require "open-uri"
+require 'nokogiri'
+require 'httparty'
+require 'httpclient'
+
 
 class Distros
   attr_accessor :input
@@ -13,15 +13,15 @@ class Distros
     document = open(url)
     content = document.read
     parsed = Nokogiri::HTML(content)
-    @list = parsed.css("table.Logo table.News td.phr2 a")
+    @list = parsed.css('table.Logo table.News td.phr2 a')
   end
 
   public
-  
+
   def show
     scraper
-    all = Array.new
-    (0...@list.length).each do |distro|
+    all = []
+    (0..@list.length-1).each do |distro|
       all << @list[distro].text
     end
     all

@@ -1,11 +1,10 @@
-require "../lib/distro_info.rb"
-require "../lib/display_info.rb"
+require '../lib/distro_info.rb'
 require "date"
 
 def show_all
   distro = Distros.new
   puts "-----------------------------------------------------"
-  puts "Enter any year you want between 2011 till now, you will see a ranking list : or 0 to go back"
+  puts "Insert any year you want between 2011 till now, you will see a ranking list : or 0 to go back"
   year = gets.to_i
   while year
     case year
@@ -24,31 +23,13 @@ def show_all
   end
 end
 
-#ssss
-#show_all
-#def compare
-#   distro = Distros.new
-#   today_distro = Todays.new
-#   puts "Please Enter the name of the distro to compare"
-#   name = gets.chomp.capitalize
-#   last_year = (Date.today.year)-1
-#   distro.input = last_year
-#   last_year_index = (distro.show).index(name)
-#   today_index = (today_distro.today_show).index
-#   differance = today_index - last_year_index
-#   if today_show <=> last_year_index = 1
-#     puts "It seems #{name} Distro is gaining #{differance} places today"
-#   end
-# end
-
-# compare
 def choose_one
   distro = Distros.new
   all_distro = distro.show
-  
+
   puts "----------------------------------------------"
   puts ""
-  puts "Enter the year"
+  puts "Insert the year you want to verify."
   year = gets.to_i
   while year
     case year
@@ -66,8 +47,17 @@ def choose_one
           puts "'#{name}' is at position '#{index}'"
           puts "--------------------------------------"
           puts ""
-          break
-          start
+          puts "puts 1 if you need to verify a distro again or 0 to start the program"
+          opt = gets.to_i
+          case opt
+          when 1
+            choose_one
+          when start
+          else
+            puts "invalid choice"
+            choose_one
+            break
+          end
         else
           puts "'#{name}' not found, try again"
           puts ""
@@ -83,7 +73,7 @@ def choose_one
 end
 
 def start
-puts ""
+  puts ""
   puts "Hello, this program is helping you to choose a linux distribition based on the popurality and users rating"
   puts "---------------------------------------"
   puts ""
@@ -102,11 +92,11 @@ puts ""
     when 1
       show_all
     when 2
-    choose_one
+      choose_one
     else
       puts "Wrong option! Try again 1 or 2"
       choice = gets.to_i
-    next
+      next
     end
   end
 end
