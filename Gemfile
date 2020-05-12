@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'byebug'
+gem 'cvs'
 gem 'httparty'
+gem 'httpclient'
 gem 'nokogiri'
 gem 'pry'
-gem 'cvs'
-gem 'httpclient'
 gem 'watir'
 gem 'webdrivers'
-gem 'byebug'
