@@ -24,9 +24,6 @@ def show_all
 end
 
 def choix
-  # distro = Distros.new
-  # all_distro = distro.show
-
   puts '----------------------------------------------'
   puts ''
   puts 'Insert the year you want to verify.'
@@ -48,25 +45,19 @@ end
 def name_
   distro = Distros.new
   all_distro = distro.show
-  puts "---------------------"
   puts 'Enter a distro name'
-  puts "---------------------"
   name = gets.chomp.capitalize
   index = all_distro.index(name)
   while name
     if all_distro.include?(name) == true
-      puts ''
-      puts '--------------------------------------'
-      puts 'Found!'
       puts "'#{name}' is at position '#{index}'"
-      puts '--------------------------------------'
-      puts ''
       puts 'puts 1 if you need to verify a distro again or 0 to start the program'
       opt = gets.to_i
       case opt
       when 1
         choix
-      when start
+      when 0
+        start
       else
         puts 'invalid choice'
         choix
@@ -74,27 +65,20 @@ def name_
       end
     else
       puts "'#{name}' not found, try again"
-      puts ''
       choix
     end
   end
 end
 
 def start
-  puts ''
   puts 'Hello, this program is helping you to choose a linux distribition based on the popurality and users rating'
   puts '---------------------------------------'
   puts ''
-
   puts 'Enter an option to start'
-  puts ''
   puts ''
   puts '1. Show all Linux distros. '
   puts '2. show my linux of choice.'
-  puts ''
-  print ''
   choice = gets.to_i
-
   while choice
     case choice
     when 1
@@ -108,5 +92,4 @@ def start
     end
   end
 end
-
 start

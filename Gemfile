@@ -4,4 +4,3 @@ gem 'cvs'
 gem 'httparty'
 gem 'httpclient'
 gem 'nokogiri'
-
