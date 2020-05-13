@@ -5,7 +5,7 @@ def show_all
   distro = Distros.new
   puts '-----------------------------------------------------'
   puts 'Insert any year you want between 2011 till now, you will see a ranking list : or 0 to go back'
-  year = gets.to_i
+  year = gets.chomp
   while year
     case year
     when 0
@@ -24,8 +24,8 @@ def show_all
 end
 
 def choix
-  distro = Distros.new
-  all_distro = distro.show
+  # distro = Distros.new
+  # all_distro = distro.show
 
   puts '----------------------------------------------'
   puts ''
@@ -36,38 +36,46 @@ def choix
     when 0
       start
     when 2011..Date.today.year.to_i
-      puts 'Enter a distro name'
-      name = gets.chomp.capitalize
-      index = all_distro.index(name)
-      while name
-        if all_distro.include?(name) == true
-          puts ''
-          puts '--------------------------------------'
-          puts 'Found!'
-          puts "'#{name}' is at position '#{index}'"
-          puts '--------------------------------------'
-          puts ''
-          puts 'puts 1 if you need to verify a distro again or 0 to start the program'
-          opt = gets.to_i
-          case opt
-          when 1
-            choix
-          when start
-          else
-            puts 'invalid choice'
-            choix
-            break
-          end
-        else
-          puts "'#{name}' not found, try again"
-          puts ''
-          choix
-        end
-      end
+      name_
     else
       puts "Year beyond scope, year must be between 2011 to today's year"
       year = gets.to_i
       next
+    end
+  end
+end
+
+def name_
+  distro = Distros.new
+  all_distro = distro.show
+  puts "---------------------"
+  puts 'Enter a distro name'
+  puts "---------------------"
+  name = gets.chomp.capitalize
+  index = all_distro.index(name)
+  while name
+    if all_distro.include?(name) == true
+      puts ''
+      puts '--------------------------------------'
+      puts 'Found!'
+      puts "'#{name}' is at position '#{index}'"
+      puts '--------------------------------------'
+      puts ''
+      puts 'puts 1 if you need to verify a distro again or 0 to start the program'
+      opt = gets.to_i
+      case opt
+      when 1
+        choix
+      when start
+      else
+        puts 'invalid choice'
+        choix
+        break
+      end
+    else
+      puts "'#{name}' not found, try again"
+      puts ''
+      choix
     end
   end
 end
