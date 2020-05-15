@@ -1,8 +1,7 @@
-require '../lib/distro_info.rb'
+require_relative '../lib/distro_info.rb'
 require 'date'
 
 def show_all(distro)
-  #distro = Distros.new
   puts '-----------------------------------------------------'
   puts 'Insert any year you want between 2011 till now, you will see a ranking list : or 0 to go back'
   year = gets.to_i
@@ -13,7 +12,7 @@ def show_all(distro)
     when 2011..Date.today.year.to_i
       year = distro.input
       puts ''
-      puts distro.show
+      distro.show.each_with_index { |name,index | puts "#{index + 1}. #{name}" }
       puts ''
       start
       next
@@ -51,7 +50,7 @@ def name_(distro)
   index = all_distro.index(name)
   while name
     if all_distro.include?(name) == true
-      puts "'#{name}' is at position '#{index}'"
+      puts "'#{name}' is at position '#{index+1}'"
       puts 'puts 1 if you need to verify a distro again or 0 to start the program'
       opt = gets.to_i
       case opt
