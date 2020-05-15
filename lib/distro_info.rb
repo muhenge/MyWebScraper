@@ -1,7 +1,5 @@
 require 'nokogiri'
-require 'httparty'
-require 'httpclient'
-
+require 'open-uri'
 class Distros
   attr_accessor :input
 
@@ -9,9 +7,9 @@ class Distros
 
   def scraper
     url = "https://distrowatch.com/index.php?dataspan=#{input}"
-    unparsed = HTTParty.get(url)
-    parsed = Nokogiri::HTML(unparsed)
-    @list = parsed.css('table.Logo table.News td.phr2 a')
+    doc = Nokogiri::HTML(URI.open(url))
+    @list = doc.css('table.Logo table.News td.phr2 a')
+    
   end
 
   public
