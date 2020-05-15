@@ -9,7 +9,6 @@ class Distros
     url = "https://distrowatch.com/index.php?dataspan=#{input}"
     doc = Nokogiri::HTML(URI.open(url))
     @list = doc.css('table.Logo table.News td.phr2 a')
-    
   end
 
   public
