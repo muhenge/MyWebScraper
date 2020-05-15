@@ -1,20 +1,22 @@
 require '../lib/distro_info.rb'
 require 'date'
 
-def show_all
-  distro = Distros.new
+def show_all(distro)
+  #distro = Distros.new
   puts '-----------------------------------------------------'
   puts 'Insert any year you want between 2011 till now, you will see a ranking list : or 0 to go back'
-  year = gets.chomp
+  year = gets.to_i
   while year
     case year
     when 0
       start
     when 2011..Date.today.year.to_i
-      distro.input = year
+      year = distro.input
+      puts ''
       puts distro.show
       puts ''
       start
+      next
     else
       puts "Year beyond scope, year must be between 2011 to today's year"
       year = gets.to_i
@@ -23,7 +25,7 @@ def show_all
   end
 end
 
-def choix
+def choix(distro)
   puts '----------------------------------------------'
   puts ''
   puts 'Insert the year you want to verify.'
@@ -33,7 +35,7 @@ def choix
     when 0
       start
     when 2011..Date.today.year.to_i
-      name_
+      name_(distro)
     else
       puts "Year beyond scope, year must be between 2011 to today's year"
       year = gets.to_i
@@ -42,8 +44,7 @@ def choix
   end
 end
 
-def name_
-  distro = Distros.new
+def name_(distro)
   all_distro = distro.show
   puts 'Enter a distro name'
   name = gets.chomp.capitalize
@@ -55,25 +56,25 @@ def name_
       opt = gets.to_i
       case opt
       when 1
-        choix
+        choix(distro)
       when 0
         start
       else
         puts 'invalid choice'
-        choix
+        choix(distro)
         break
       end
     else
       puts "'#{name}' not found, try again"
-      choix
+      choix(distro)
     end
   end
 end
 
 def start
+  distro = Distros.new
   puts 'Hello, this program is helping you to choose a linux distribition based on the popurality and users rating'
   puts '---------------------------------------'
-  puts ''
   puts 'Enter an option to start'
   puts ''
   puts '1. Show all Linux distros. '
@@ -82,9 +83,9 @@ def start
   while choice
     case choice
     when 1
-      show_all
+      show_all(distro)
     when 2
-      choix
+      choix(distro)
     else
       puts 'Wrong option! Try again 1 or 2'
       choice = gets.to_i
@@ -92,4 +93,5 @@ def start
     end
   end
 end
+
 start
