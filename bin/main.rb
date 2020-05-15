@@ -12,12 +12,16 @@ def show_all(distro)
     when 2011..Date.today.year.to_i
       year = distro.input
       puts ''
+      puts 'The Linux Distrubutions list'
+      puts '-----------------------------'
       distro.show.each_with_index { |name, index| puts "#{index + 1}. #{name}" }
-      puts ''
+      puts '---------------------------------------------------------'
       start
       next
     else
+      puts '--------------------------------------------------------------'
       puts "Year beyond scope, year must be between 2011 to today's year"
+      puts '--------------------------------------------------------------'
       year = gets.to_i
       next
     end
@@ -28,6 +32,7 @@ def choix(distro)
   puts '----------------------------------------------'
   puts ''
   puts 'Insert the year you want to verify.'
+  puts ''
   year = gets.to_i
   while year
     case year
@@ -50,7 +55,11 @@ def name_(distro)
   index = all_distro.index(name)
   while name
     if all_distro.include?(name) == true
+      puts ''
+      puts '---------------------------------------'
       puts "'#{name}' is at position '#{index + 1}'"
+      puts '---------------------------------------'
+      puts ''
       puts 'puts 1 if you need to verify a distro again or 0 to start the program'
       opt = gets.to_i
       case opt
