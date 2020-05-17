@@ -1,7 +1,8 @@
 require 'nokogiri'
 require 'open-uri'
 class Distros
-  attr_accessor :input
+  attr_reader :input
+  attr_writer :input
 
   private
 
