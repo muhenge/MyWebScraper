@@ -12,10 +12,11 @@ def show_all(distro)
     when 0
       start
     when 2011..Date.today.year.to_i
-      year = distro.input
+      distro.input = year
       puts ''
       puts 'The Linux Distrubutions list'
       puts '-----------------------------'
+
       distro.show.each_with_index { |name, index| puts "#{index + 1}. #{name}" }
       puts '---------------------------------------------------------'
       start
