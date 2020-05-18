@@ -5,6 +5,11 @@
 In this project, I created a web scraper of a linux distribitions website [distrowatch](https://distrowatch.com/), and I displayed the result based mostly
 on the ranking and the popurality of a linux distros.
 
+### Screenshots
+
+![Screenshot](img/Screenshot_20200518_132745.png)
+
+
 ### Built With
 The project was developed using the following technologies:
 - [RUBY](https://www.ruby-lang.org/es/)
