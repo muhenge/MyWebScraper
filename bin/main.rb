@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/distro_info.rb'
+require_relative '../lib/distro_info'
 require 'date'
 
 def show_all(distro)
